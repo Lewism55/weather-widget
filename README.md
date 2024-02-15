@@ -1,30 +1,20 @@
-# React + TypeScript + Vite
+# Weather Widget
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created using Vite (npm create vite@latest) using a React Typescript template. 
 
-Currently, two official plugins are available:
+## Project setup
+First clone the repo locally and then run `npm install` in the root folder to install all dependencies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run the project, use the command: `npm run dev`.
 
-## Expanding the ESLint configuration
+You will require an API key for OpenWeather.co.uk to use the project. You can get one by signing up at [OpenWeatherMap](https://openweathermap.org/). Once you have an API key, you must create a file called `.env`. You can then add your key into this file as shown in the `.env.example` file in the project root. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Notes
+- Where possible, I have chosen to approach this task in a way that would show the most technical skill using Edozo frontend stack. In terms of what's appropriate I believe this includes: React, Typescript, React Context, Vite, ViteTest (Vitest), React Testing Library, Styled Components and Github.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Libraries Used:
+- styled-components (for styling)
+- framer-motion (for animations)
+- vitest (for testing)
+- react-testing-library (for testing)
+- @types/node (for environment variables, in this case the openweather api key)
