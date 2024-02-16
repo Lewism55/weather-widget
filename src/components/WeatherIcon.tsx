@@ -1,0 +1,3 @@
+// display one of a number of weather SVGs depending on what the current weather is... 
+// options: clear, clouds, snow, rain, drizzle, thunderstorm, and types of foggy weather: mist, smoke, haze, dust, fog, sand, ash, squall, tornado
+// allow customisable sizes

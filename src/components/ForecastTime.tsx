@@ -1,0 +1,1 @@
+// display a weather icon (depending on which mode the widget is in)
