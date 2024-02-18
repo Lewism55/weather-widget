@@ -51,7 +51,6 @@ const WindInfo = styled(OtherInfo)`
 `
 
 const Weather = () => {
-    // used props here to get around the awkward optional chaining that's caused from having the weather context initially return unknown
     const { weatherData } = useWeather()
 
     return (

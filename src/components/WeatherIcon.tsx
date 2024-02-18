@@ -13,7 +13,6 @@ interface WeatherIconProps {
 
 const WeatherIcon = ({ weather, size }: WeatherIconProps) => {
     let icon
-    console.log(weather)
 
     switch (weather) {
         case 'Clear':

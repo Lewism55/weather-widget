@@ -1,7 +1,13 @@
-import { IconProps } from './IconTypes'
+import { IconProps } from './Types'
 
-const DrizzleIcon = ({size, ...rest}: IconProps) => (
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox={size === 'small' ? '0 0 60 60' : '0 0 70 70'} width={size === 'small' ? 24 : 80} height={size === 'small' ? 24 : 80} {...rest}>
+const DrizzleIcon = ({ size, ...rest }: IconProps) => (
+    <svg
+        xmlns='http://www.w3.org/2000/svg'
+        viewBox={size === 'small' ? '0 0 60 60' : '0 0 70 70'}
+        width={size === 'small' ? 24 : 80}
+        height={size === 'small' ? 24 : 80}
+        {...rest}
+    >
         <defs>
             <filter id='blur' width='200%' height='200%'>
                 <feGaussianBlur in='SourceAlpha' stdDeviation={3} />

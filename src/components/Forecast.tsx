@@ -17,9 +17,10 @@ const ForecastWrapper = styled.div`
 const ForecastSelections = styled.div`
     display: flex;
     flex-direction: row;
-    width: 100%;
-    justify-content: space-around;
-    border-bottom: 1px solid #DCDDDD;
+    width: 90%;
+    justify-content: space-between;
+    margin: 0px 10%;
+    border-bottom: 1px solid #dcdddd;
 `
 
 const Forecast = () => {
@@ -33,8 +34,8 @@ const Forecast = () => {
     return (
         <ForecastWrapper>
             <ForecastSelections>
-            <DropdownSelect options={dropdownDates} selectedOption={selectedDate} onChange={setSelectedDate} size='small'/>
-            <DropdownSelect options={forecastOptions} selectedOption={forecastType} onChange={setForecastType} size='small'/>
+                <DropdownSelect options={dropdownDates} selectedOption={selectedDate} onChange={setSelectedDate} size='small' />
+                <DropdownSelect options={forecastOptions} selectedOption={forecastType} onChange={setForecastType} size='small' />
             </ForecastSelections>
             <ForecastDay oneDayForecast={forecastData[selectedDate]} forecastType={forecastType} />
         </ForecastWrapper>

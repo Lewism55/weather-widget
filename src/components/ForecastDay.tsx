@@ -1,6 +1,17 @@
 import styled from 'styled-components'
 import ForecastTime from './ForecastTime'
-import { oneDayForecast } from './Types'
+
+interface oneDayForecast {
+    dt: number
+    main: {
+        temp: number
+    }
+    rain: number
+    weather: {
+        main: string
+    }
+    time: string
+}
 
 interface ForecastDayProps {
     oneDayForecast: oneDayForecast[]

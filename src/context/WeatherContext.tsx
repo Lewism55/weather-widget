@@ -2,6 +2,7 @@ import React, { createContext, useState, useEffect, useCallback, useContext } fr
 import { ReactNode } from 'react'
 import { convertDateTime, groupForecastByDate } from '../utils/Utils'
 
+// Interfaces of simplified API responses. I don't want to have to dig through so have just kept what data I need.
 export interface WeatherData {
     name: string
     weather: { main: string }[]
@@ -9,15 +10,6 @@ export interface WeatherData {
     main: { temp: number }
     rain?: number
     wind: { speed: number }
-}
-
-export const defaultWeatherData: WeatherData = {
-    name: '',
-    weather: [{ main: '' }],
-    sys: { sunrise: 0, sunset: 0 },
-    rain: 0,
-    main: { temp: 0 },
-    wind: { speed: 0 },
 }
 
 export interface ForecastData {
@@ -32,6 +24,16 @@ export interface ForecastData {
         }
         time: string
     }[]
+}
+
+// Default values for the context
+export const defaultWeatherData: WeatherData = {
+    name: '',
+    weather: [{ main: '' }],
+    sys: { sunrise: 0, sunset: 0 },
+    rain: 0,
+    main: { temp: 0 },
+    wind: { speed: 0 },
 }
 
 const defaultForecastData: ForecastData = {

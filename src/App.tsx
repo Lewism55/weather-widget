@@ -1,7 +1,6 @@
 import './App.css'
 import styled from 'styled-components'
 import Widget from './components/Widget'
-import { QueryClient, QueryClientProvider } from 'react-query'
 import { WeatherProvider } from './context/WeatherContext'
 
 const StyledApp = styled.div`
@@ -12,17 +11,13 @@ const StyledApp = styled.div`
     align-items: center;
 `
 
-const queryClient = new QueryClient()
-
 function App() {
     return (
-        <QueryClientProvider client={queryClient}>
-            <WeatherProvider>
-                <StyledApp>
-                    <Widget />
-                </StyledApp>
-            </WeatherProvider>
-        </QueryClientProvider>
+        <WeatherProvider>
+            <StyledApp>
+                <Widget />
+            </StyledApp>
+        </WeatherProvider>
     )
 }
 

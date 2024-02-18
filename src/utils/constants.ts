@@ -1,3 +1,4 @@
+// Using a constants file here for tidying up of components
 export const cities = [
     { value: 'London', label: 'London' },
     { value: 'Cardiff', label: 'Cardiff' },

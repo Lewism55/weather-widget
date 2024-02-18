@@ -7,7 +7,7 @@ interface DropdownSelectProps {
     size: 'large' | 'small'
 }
 
-const DropdownSelect = ({ selectedOption, options, onChange, size}: DropdownSelectProps) => {
+const DropdownSelect = ({ selectedOption, options, onChange, size }: DropdownSelectProps) => {
     const handleChange = (selectedOption: any) => {
         const choice = selectedOption.value
         if (choice === selectedOption) return

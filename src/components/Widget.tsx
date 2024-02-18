@@ -9,7 +9,7 @@ import { cities } from '../utils/constants'
 
 const StyledWidget = styled.div`
     width: 320px;
-    height: 380px;
+    height: 430px;
     border: 1px solid black;
     padding: 10px;
     display: flex;
@@ -32,26 +32,27 @@ const MainWrapper = styled(motion.div)`
 function Widget() {
     const { weatherData, forecastData, isLoading, setLocation } = useWeather()
 
-    // created var to prevent repeating of styled widget tag. Also one liners make it easier to read.
-    let content
-
-    // stuck with if/else because of the data checks being multiple possible values.
-    // switch statements work best for single value checks imo.
-    if (isLoading || weatherData === defaultWeatherData) content = <Loading />
-    else if (!weatherData || !forecastData) content = 'No data available currently. Please try again later.'
-    else {
-        content = (
-            <>
-                <DropdownSelect onChange={setLocation} options={cities} selectedOption={weatherData.name} size='large'/>
-                <MainWrapper initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
-                    <Weather />
-                    <Forecast />
-                </MainWrapper>
-            </>
+    // Loading state
+    if (isLoading || weatherData === defaultWeatherData)
+        return (
+            <StyledWidget>
+                <Loading />
+            </StyledWidget>
         )
-    }
 
-    return <StyledWidget>{content}</StyledWidget>
+    // Error/no data state (likely caused by API downtime/issue)
+    if (!weatherData || !forecastData) return <StyledWidget>'No data available currently. Please try again later.'</StyledWidget>
+
+    return (
+        <StyledWidget>
+            {' '}
+            <MainWrapper initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }}>
+                <DropdownSelect onChange={setLocation} options={cities} selectedOption={weatherData.name} size='large' />
+                <Weather />
+                <Forecast />
+            </MainWrapper>
+        </StyledWidget>
+    )
 }
 
 export default Widget
