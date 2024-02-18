@@ -31,7 +31,6 @@ const ForecastDayContainer = styled.div`
 `
 
 const ForecastDay = ({ oneDayForecast, forecastType }: ForecastDayProps) => {
-    console.log(oneDayForecast)
     return (
         <ForecastDayContainer>
             {oneDayForecast.map((day, index) => (

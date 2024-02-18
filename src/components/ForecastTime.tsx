@@ -35,7 +35,7 @@ const StartTime = styled.div`
 
 const ForecastTime = ({ forecastType, weather, temp, startTime }: ForecastTimeProps) => {
     return (
-        <ForecastTimeContainer>
+        <ForecastTimeContainer aria-label='forecast-blob'>
             {forecastType === 'weather' ? <WeatherIcon weather={weather} size='small' /> : <TemperatureValue>{temp}°c</TemperatureValue>}
             <StartTime>{startTime}</StartTime>
         </ForecastTimeContainer>

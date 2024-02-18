@@ -16,22 +16,22 @@ const WeatherIcon = ({ weather, size }: WeatherIconProps) => {
 
     switch (weather) {
         case 'Clear':
-            icon = <ClearIcon size={size} />
+            icon = <ClearIcon size={size} aria-label='clear-icon'/>
             break
         case 'Clouds':
-            icon = <CloudsIcon size={size} />
+            icon = <CloudsIcon size={size} aria-label='clouds-icon'/>
             break
         case 'Drizzle':
-            icon = <DrizzleIcon size={size} />
+            icon = <DrizzleIcon size={size} aria-label='drizzle-icon'/>
             break
         case 'Rain':
-            icon = <RainIcon size={size} />
+            icon = <RainIcon size={size} aria-label='rain-icon'/>
             break
         case 'Snow':
-            icon = <SnowIcon size={size} />
+            icon = <SnowIcon size={size} aria-label='snow-icon'/>
             break
         case 'Thunderstorm':
-            icon = <ThunderstormIcon size={size} />
+            icon = <ThunderstormIcon size={size} aria-label='thunderstorm-icon'/>
             break
         case 'Fog':
         case 'Mist':
@@ -42,14 +42,14 @@ const WeatherIcon = ({ weather, size }: WeatherIconProps) => {
         case 'Ash':
         case 'Squall':
         case 'Tornado':
-            icon = <FogIcon size={size} />
+            icon = <FogIcon size={size} aria-label='fog-icon'/>
             break
         default:
             icon = null
             break
     }
 
-    return <>{icon}</>
+    return icon
 }
 
 export default WeatherIcon

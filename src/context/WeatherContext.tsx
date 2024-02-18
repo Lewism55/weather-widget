@@ -61,7 +61,7 @@ interface WeatherContextData {
     refresh: () => void
 }
 
-const WeatherContext = createContext<WeatherContextData>({
+export const WeatherContext = createContext<WeatherContextData>({
     weatherData: defaultWeatherData,
     forecastData: defaultForecastData,
     isLoading: false,
