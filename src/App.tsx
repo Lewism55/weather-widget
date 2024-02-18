@@ -2,7 +2,7 @@ import './App.css'
 import styled from 'styled-components'
 import Widget from './components/Widget'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { WeatherProvider } from './context/WeatherContext'
+import { WeatherProvider } from './context/AltContext'
 
 const StyledApp = styled.div`
     width: 100%;

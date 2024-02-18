@@ -3,25 +3,26 @@ import { motion } from 'framer-motion'
 
 const rotateAnimation = {
     animate: {
+        opacity: 1,
         rotate: 360,
         transition: {
-        duration: 1,
-        ease: "linear",
-        repeat: Infinity,
-      },
+            duration: 1,
+            ease: 'linear',
+            repeat: Infinity,
+        },
     },
-      
 }
 
 const Loading = () => (
     <motion.div
         style={{
-            width: 50,
-            height: 50,
-            backgroundImage: 'linear-gradient(to right, white, white, grey, white, white)',
-            borderRadius: '50%',
+            width: 25,
+            height: 25,
+            backgroundColor: '#DCDDDD',
+            borderRadius: '3%',
         }}
         variants={rotateAnimation}
+        exit={{ opacity: 0 }}
         animate='animate'
     />
 )

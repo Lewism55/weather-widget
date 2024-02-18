@@ -16,6 +16,7 @@ const LocationSelector = ({ onChange, selectedCity }: LocationSelectorProps) => 
         onChange(city)
     }
 
+    // to be replaced with react select dropdown
     return (
         <select value={currentCity} onChange={(e) => handleChange(e.target.value)}>
             {cities.map((city) => (

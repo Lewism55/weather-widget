@@ -2,13 +2,22 @@ import { createContext, useContext, ReactNode, useState } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
 // define the shape of the data returned from the API for current weather
-interface WeatherData {
+export interface WeatherData {
     name: string
     weather: { main: string }[]
     sys: { sunrise: number; sunset: number }
     main: { temp: number }
-    rain: number
+    rain?: number
     wind: { speed: number }
+}
+
+const defaultWeatherData: WeatherData = {
+    name: '',
+    weather: [{ main: '' }],
+    sys: { sunrise: 0, sunset: 0 },
+    rain: 0,
+    main: { temp: 0 },
+    wind: { speed: 0 },
 }
 
 // define the shape of the data returned from the API for the forecast
@@ -25,12 +34,31 @@ interface ForecastData {
     }[]
 }
 
+const defaultForecastData: ForecastData = {
+    list: [
+        {
+            dt: 0,
+            main: {
+                temp: 0,
+            },
+            rain: 0,
+            weather: [
+                {
+                    main: '',
+                },
+            ],
+        },
+    ],
+}
+
 interface WeatherProviderProps {
     children: ReactNode
 }
 
 const fetchWeather = async (location: string): Promise<WeatherData> => {
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${location},uk&units=metric&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`)
+    const response = await fetch(
+        `http://api.openweathermap.org/data/2.5/weather?q=${location},uk&units=metric&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`,
+    )
     if (!response.ok) {
         throw new Error('Network response for current weather was not ok')
     }
@@ -47,12 +75,13 @@ const fetchWeather = async (location: string): Promise<WeatherData> => {
 }
 
 const fetchForecast = async (location: string): Promise<ForecastData> => {
-    const response = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${location},uk&units=metric&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`)
+    const response = await fetch(
+        `http://api.openweathermap.org/data/2.5/forecast?q=${location},uk&units=metric&appid=${import.meta.env.VITE_OPEN_WEATHER_API_KEY}`,
+    )
     if (!response.ok) {
         throw new Error('Network response for forecast was not ok')
     }
     const data = await response.json()
-    console.log(data)
     // Same as above, only returning what I'm using so that the data isn't bloated and intellisense is cleaner
     return {
         list: data.list.map((item: any) => ({
