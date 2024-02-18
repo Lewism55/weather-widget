@@ -19,7 +19,7 @@ const Loading = () => (
             width: 25,
             height: 25,
             backgroundColor: '#DCDDDD',
-            borderRadius: '3%',
+            borderRadius: '10%',
         }}
         variants={rotateAnimation}
         exit={{ opacity: 0 }}

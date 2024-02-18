@@ -26,7 +26,7 @@ You will require an API key for OpenWeather.co.uk to use the project. You can ge
 - vitest (for testing)
 - react-testing-library (for testing)
 - @types/node (for environment variables, in this case the openweather api key)
-- react-query (for api calls, Note this was my first time using this library, I wanted to test it out as I've heard great things!)
+- react-select (for the dropdown. I know this is a UI library, but it's the industry standard for non-native dropdowns and I felt it was appropriate to use it here)
 
 ### Icons/Images
 Unfortunately, SVG creation / Icon design is not a skill I currently possess. As such I used this excellent free weather Icon Library in this project: https://www.amcharts.com/free-animated-svg-weather-icons/

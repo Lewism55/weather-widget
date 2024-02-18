@@ -1,21 +1,44 @@
-// import { useWeather } from "../context/AltContext"
-// import styled from "styled-components"
+import { useState } from 'react'
+import { useWeather } from '../context/WeatherContext'
+import styled from 'styled-components'
+import ForecastDay from './ForecastDay'
+import { formatOptions } from '../utils/Utils'
+import DropdownSelect from './DropdownSelect'
+import { forecastOptions } from '../utils/constants'
 
-// // select day from next 5 days
-// // select either Temperature and chance of Rain
-// // dropdown for the day (out of the days available in the forecast info)
+const ForecastWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+`
 
-// const ForecastWrapper = styled.div`
-// `
+const ForecastSelections = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    border-bottom: 1px solid #DCDDDD;
+`
 
+const Forecast = () => {
+    const [forecastType, setForecastType] = useState<string>('weather')
+    const { forecastData } = useWeather()
+    const [selectedDate, setSelectedDate] = useState(Object.keys(forecastData)[0] || '')
 
-// const Forecast = () => {
-//     const [ forecastType, setForecastType ] = useState<'temperature' | 'weather'>('temperature')
-//     const { forecast } = useWeather()
+    const dates = Object.keys(forecastData)
+    const dropdownDates = formatOptions(dates)
 
-//     return (
-        
-//     )
-// }
+    return (
+        <ForecastWrapper>
+            <ForecastSelections>
+            <DropdownSelect options={dropdownDates} selectedOption={selectedDate} onChange={setSelectedDate} size='small'/>
+            <DropdownSelect options={forecastOptions} selectedOption={forecastType} onChange={setForecastType} size='small'/>
+            </ForecastSelections>
+            <ForecastDay oneDayForecast={forecastData[selectedDate]} forecastType={forecastType} />
+        </ForecastWrapper>
+    )
+}
 
-// export default Forecast
+export default Forecast

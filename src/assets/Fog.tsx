@@ -1,8 +1,8 @@
 import { IconProps } from './IconTypes'
 
-const FogIcon = ({width, height, ...rest}: IconProps) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox='0 0 64 64' {...rest} height={height} width={width}>
-    <g>
+const FogIcon = ({size, ...rest}: IconProps) => (
+  <svg xmlns='http://www.w3.org/2000/svg' viewBox={size === 'small' ? '0 0 60 60' : '0 0 64 64'} width={size === 'small' ? 24 : 72} height={size === 'small' ? 24 : 72} {...rest}>
+  <g>
       <path
         fill="none"
         stroke="#d1d5db"

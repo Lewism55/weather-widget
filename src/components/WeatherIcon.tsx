@@ -1,50 +1,56 @@
-import ClearIcon from '../assets/Clear';
-import CloudsIcon from '../assets/Clouds';
-import DrizzleIcon from '../assets/Drizzle';
-import FogIcon from '../assets/Fog';
-import RainIcon from '../assets/Rain';
-import SnowIcon from '../assets/Snow';
-import ThunderstormIcon from '../assets/Thunderstorm';
-import { useWeather } from '../context/AltContext';
+import ClearIcon from '../assets/Clear'
+import CloudsIcon from '../assets/Clouds'
+import DrizzleIcon from '../assets/Drizzle'
+import FogIcon from '../assets/Fog'
+import RainIcon from '../assets/Rain'
+import SnowIcon from '../assets/Snow'
+import ThunderstormIcon from '../assets/Thunderstorm'
 
 interface WeatherIconProps {
-    width: number;
-    height: number;
+    weather: string
+    size: 'large' | 'small'
 }
 
-const WeatherIcon = ({ width, height }: WeatherIconProps) => {
-    const { weatherData } = useWeather()
-
+const WeatherIcon = ({ weather, size }: WeatherIconProps) => {
     let icon
+    console.log(weather)
 
-    switch (weatherData.weather[0].main) {
+    switch (weather) {
         case 'Clear':
-            icon = <ClearIcon width={width} height={height} />;
-            break;
+            icon = <ClearIcon size={size} />
+            break
         case 'Clouds':
-            icon = <CloudsIcon width={width} height={height}/>;
-            break;
+            icon = <CloudsIcon size={size} />
+            break
         case 'Drizzle':
-            icon = <DrizzleIcon width={width} height={height} />;
-            break;
-        case 'Fog':
-            icon = <FogIcon width={width} height={height} />;
-            break;
+            icon = <DrizzleIcon size={size} />
+            break
         case 'Rain':
-            icon = <RainIcon width={width} height={height} />;
-            break;
+            icon = <RainIcon size={size} />
+            break
         case 'Snow':
-            icon = <SnowIcon width={width} height={height} />;
-            break;
+            icon = <SnowIcon size={size} />
+            break
         case 'Thunderstorm':
-            icon = <ThunderstormIcon width={width} height={height} />;
-            break;
+            icon = <ThunderstormIcon size={size} />
+            break
+        case 'Fog':
+        case 'Mist':
+        case 'Haze':
+        case 'Smoke':
+        case 'Dust':
+        case 'Sand':
+        case 'Ash':
+        case 'Squall':
+        case 'Tornado':
+            icon = <FogIcon size={size} />
+            break
         default:
-            icon = null;
-            break;
+            icon = null
+            break
     }
 
-    return <>{icon}</>;
-};
+    return <>{icon}</>
+}
 
-export default WeatherIcon;
+export default WeatherIcon

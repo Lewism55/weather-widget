@@ -1,13 +1,7 @@
-import * as React from 'react'
-import { SVGProps } from 'react'
+import { IconProps } from "./IconTypes"
 
-interface ClearIconProps extends SVGProps<SVGSVGElement>{
-    width: number;
-    height: number
-}
-
-const ThunderstormIcon = (props: SVGProps<SVGSVGElement>) => (
-    <svg xmlns='http://www.w3.org/2000/svg' width={64} height={64} {...props}>
+const ThunderstormIcon = ({size, ...rest}: IconProps) => (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox={size === 'small' ? '0 0 60 60' : '0 0 70 70'} width={size === 'small' ? 24 : 80} height={size === 'small' ? 24 : 80} {...rest}>
         <defs>
             <filter id='blur' width='200%' height='200%'>
                 <feGaussianBlur in='SourceAlpha' stdDeviation={3} />

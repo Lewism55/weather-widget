@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useWeather } from '../context/AltContext'
+import { useWeather } from '../context/WeatherContext'
 import WeatherIcon from './WeatherIcon'
 import FogIcon from '../assets/Fog'
 
@@ -8,6 +8,7 @@ const WeatherGrid = styled.div`
     flex-direction: column;
     height: 50%;
     width: 100%;
+    margin: 0px 0px 20px 0px;
 `
 
 const TopRow = styled.div`
@@ -36,13 +37,12 @@ const AllCol = styled.div`
 `
 
 const Temperature = styled(AllCol)`
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
 `
 
 const OtherInfo = styled(AllCol)`
-    font-size: 14px;
-    font-style: italic;
+    font-size: 16px;
     color: grey;
 `
 
@@ -57,10 +57,9 @@ const Weather = () => {
     return (
         <WeatherGrid>
             <TopRow>
-                <Temperature>{weatherData.main.temp}°C</Temperature>
+                <Temperature>{weatherData.main.temp}°c</Temperature>
                 <OtherInfo>
-                    {weatherData.weather[0].main}
-                    <WeatherIcon width={64} height={64} />
+                    <WeatherIcon weather={weatherData.weather[0].main} size='large' />
                 </OtherInfo>
             </TopRow>
             <BottomRow>
@@ -69,7 +68,7 @@ const Weather = () => {
                     <DaylightCol>Sunset: {weatherData.sys.sunset}</DaylightCol>
                 </OtherInfo>
                 <WindInfo>
-                    <FogIcon width={64} height={64} />
+                    <FogIcon size='small' />
                     {weatherData.wind.speed} m/s
                 </WindInfo>
             </BottomRow>

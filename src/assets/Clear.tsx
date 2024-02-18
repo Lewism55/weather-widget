@@ -1,7 +1,7 @@
 import { IconProps } from './IconTypes'
 
-const ClearIcon = ({width, height, ...rest}: IconProps) => (
-    <svg xmlns='http://www.w3.org/2000/svg' width={width} height={height} {...rest}>
+const ClearIcon = ({size, ...rest}: IconProps) => (
+    <svg xmlns='http://www.w3.org/2000/svg' viewBox={size === 'small' ? '0 0 60 60' : '0 0 70 70'} width={size === 'small' ? 24 : 80} height={size === 'small' ? 24 : 80} {...rest}>
         <defs>
             <filter id='blur' width='200%' height='200%'>
                 <feGaussianBlur in='SourceAlpha' stdDeviation={3} />
@@ -41,13 +41,13 @@ const ClearIcon = ({width, height, ...rest}: IconProps) => (
                 >
                     <path
                         fill='none'
-                        stroke='grey'
+                        stroke='orange'
                         strokeLinecap='round'
                         strokeWidth={2}
                         d='M0 9v3M-6.364 6.364l-2.121 2.121M-9 0h-3M-6.364-6.364l-2.121-2.121M0-9v-3M6.364-6.364l2.121-2.121M9 0h3M6.364 6.364l2.121 2.121'
                     />
                 </g>
-                <circle r={5} fill='grey' stroke='grey' strokeWidth={2} />
+                <circle r={5} fill='orange' stroke='orange' strokeWidth={2} />
             </g>
         </g>
     </svg>

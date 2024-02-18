@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import WeatherIcon from './WeatherIcon';
 
 interface ForecastTimeProps {
-    forecastType: 'weather' | 'temperature';
-    forecast: string;
+    forecastType: string;
+    weather: string;
     temp: number;
     startTime: string;
 }
@@ -12,10 +12,19 @@ const ForecastTimeContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 5px 4px;
+    margin: 5px 1px 1px 1px;
+    border: 1px solid #DCDDDD;
+    border-radius: 10px;
+    width: 26px;
+    height: 60px;
+    justify-content: space-around;
+    background-color: #F8FBF8;
 `;
 
-const TemperatureValue = styled.h2`
-   font-size: 30px;
+const TemperatureValue = styled.h4`
+    margin: 5px;
+    font-size: 12px;
 `;
 
 const StartTime = styled.div`
@@ -24,13 +33,13 @@ const StartTime = styled.div`
     color: lightgrey;
 `;
 
-const ForecastTime = ({ forecastType, forecast, temp, startTime }: ForecastTimeProps) => {
+const ForecastTime = ({ forecastType, weather, temp, startTime }: ForecastTimeProps) => {
     return (
         <ForecastTimeContainer>
             {forecastType === 'weather' ? (
-                <WeatherIcon width={64} height={64}/>
+                <WeatherIcon weather={weather} size='small'/>
             ) : (
-                <TemperatureValue>25°C</TemperatureValue>
+                <TemperatureValue>{temp}°c</TemperatureValue>
             )}
             <StartTime>{startTime}</StartTime>
         </ForecastTimeContainer>
