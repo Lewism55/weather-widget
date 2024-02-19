@@ -10,7 +10,8 @@ To run the project, use the command: `npm run dev`.
 You will require an API key for OpenWeather.co.uk to use the project. You can get one by signing up at [OpenWeatherMap](https://openweathermap.org/). Once you have an API key, you must create a file called `.env`. You can then add your key into this file as shown in the `.env.example` file in the project root. 
 
 To run the tests you can use the command: `npm run test`.
-(Note tests *should* all pass: 6 files, 21 passing tests)
+(Note, to use Vitest you need to be using Node 18+)
+(Note, tests *should* all pass: 7 files, 24 passing tests)
 
 ### Notes
 - Where possible, I have chosen to approach this task in a way that would show the most technical skill using the following frontend stack: React, Typescript, React Context, Vite, Vitest, React Testing Library, Styled Components and git/Github.
@@ -22,6 +23,7 @@ To run the tests you can use the command: `npm run test`.
 - I could have gone way further with the options within forecast, but kept it to two options for simplicity (weather or temperature). I've written these in a way which should make it easy to add more forecast options in the future. You'd just have to update some interfaces, add a new option in the dropdown and decide how you want to display the data.
 
 ### Further Improvement Suggestions:
+- Add a landing page to the application which handles errors/unhappy paths around a lack of api key etc.
 - Add more options within the forecast dropdown.
 - Make the location selector freetext (either within GB or worldwide...)
 - add more svgs/icons for specific weather types (how heavy rain is for example)
@@ -34,7 +36,7 @@ To run the tests you can use the command: `npm run test`.
 - Vitest (for testing)
 - react-testing-library (for testing)
 - @types/node (for environment variables, in this case the openweather api key)
-- react-select (for the dropdown. I know this is a UI library, but it's the industry standard for non-native dropdowns and I felt it was appropriate to use it here. Note I also wrote no tests for my customised component as there are tests in the original library. I would write tests for this if I'd written a select component from scratch.)
+- react-select (for the dropdown. I know this is a UI library, but using this library saved me a lot of time, and I've wrapped to allow specific functionality in this project)
 
 ### Icons/Images
 Unfortunately, SVG creation / Icon design is not a skill I currently possess. As such I used this excellent free weather Icon Library I found for this project: https://www.amcharts.com/free-animated-svg-weather-icons/

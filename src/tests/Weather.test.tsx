@@ -8,7 +8,7 @@ describe('Weather', () => {
     it('displays the different weather fields shown in weather component', async () => {
         render(
             <WeatherContext.Provider
-                value={{ weatherData: mockWeatherData, forecastData: mockForecastData, isLoading: false, location: '', setLocation: vi.fn(), refresh: vi.fn() }}
+                value={{ weatherData: mockWeatherData, forecastData: mockForecastData, isLoading: false, location: '', setLocation: vi.fn() }}
             >
                 <Weather />
             </WeatherContext.Provider>,

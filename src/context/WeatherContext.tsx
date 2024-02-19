@@ -58,7 +58,6 @@ interface WeatherContextData {
     isLoading: boolean
     location: string
     setLocation: React.Dispatch<React.SetStateAction<string>>
-    refresh: () => void
 }
 
 export const WeatherContext = createContext<WeatherContextData>({
@@ -67,7 +66,6 @@ export const WeatherContext = createContext<WeatherContextData>({
     isLoading: false,
     location: '',
     setLocation: () => {},
-    refresh: () => {},
 })
 
 interface WeatherProviderProps {
@@ -80,6 +78,8 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
     const [isLoading, setIsLoading] = useState(false)
     const [location, setLocation] = useState('London')
 
+    // used useCallback for both of the below functions to improve performance.
+    // The useCallback function is not re-created every time the component re-renders, only when location changes
     const fetchWeatherData = useCallback(async () => {
         setIsLoading(true)
         try {
@@ -103,6 +103,7 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
         }
     }, [location])
 
+    // Same as above for useCallback :)
     const fetchForecastData = useCallback(async () => {
         setIsLoading(true)
         try {
@@ -126,17 +127,13 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
         }
     }, [location])
 
+    // calls when either of the above callback functions change
     useEffect(() => {
         fetchWeatherData()
         fetchForecastData()
     }, [fetchWeatherData, fetchForecastData])
 
-    const refresh = () => {
-        fetchWeatherData()
-        fetchForecastData()
-    }
-
-    return <WeatherContext.Provider value={{ weatherData, forecastData, isLoading, location, setLocation, refresh }}>{children}</WeatherContext.Provider>
+    return <WeatherContext.Provider value={{ weatherData, forecastData, isLoading, location, setLocation }}>{children}</WeatherContext.Provider>
 }
 
 function useWeather() {

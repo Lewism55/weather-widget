@@ -1,4 +1,4 @@
-import ReactSelect from 'react-select'
+import ReactSelect, { StylesConfig } from 'react-select'
 
 interface DropdownSelectProps {
     selectedOption: string
@@ -7,6 +7,14 @@ interface DropdownSelectProps {
     size: 'large' | 'small'
 }
 
+export type OptionType = {
+    label: string
+    value: string
+}
+
+type IsMulti = false;
+
+// Using a wrapper to ensure consistent use across the project. Also allows for these two 'size' type options for consistency in ui style.
 const DropdownSelect = ({ selectedOption, options, onChange, size }: DropdownSelectProps) => {
     const handleChange = (selectedOption: any) => {
         const choice = selectedOption.value
@@ -14,9 +22,8 @@ const DropdownSelect = ({ selectedOption, options, onChange, size }: DropdownSel
         onChange(choice)
     }
 
-    // ts ignores below are solely due to the fact that the react-select library is not playing nicely
-    const customStyles = {
-        // @ts-ignore
+    // Solution to fiddly typing from React-Select: https://stackoverflow.com/questions/63696310/how-to-use-typescript-with-the-definition-of-custom-styles-for-a-select-using-re
+    const customStyles: StylesConfig<OptionType, IsMulti>= {
         option: (provided, state) => ({
             ...provided,
             backgroundColor: state.isSelected ? '#DCDDDD' : state.isFocused ? '#f7fcfe' : 'white',
@@ -24,7 +31,6 @@ const DropdownSelect = ({ selectedOption, options, onChange, size }: DropdownSel
                 cursor: 'pointer',
             },
         }),
-        // @ts-ignore
         control: (provided) => ({
             ...provided,
             border: 'none',
@@ -35,7 +41,6 @@ const DropdownSelect = ({ selectedOption, options, onChange, size }: DropdownSel
                 border: 'none',
             },
         }),
-        // @ts-ignore
         singleValue: (provided) => ({
             ...provided,
             fontSize: size === 'large' ? '50px' : '16px',

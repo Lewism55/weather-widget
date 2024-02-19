@@ -32,8 +32,11 @@ const MainWrapper = styled(motion.div)`
 function Widget() {
     const { weatherData, forecastData, isLoading, setLocation } = useWeather()
 
-    // Loading state
-    if (isLoading || weatherData === defaultWeatherData)
+    // Loading state, also show loading if the default weather data is being used
+    // the json stringify is to ensure a cleaner check... aware of issues with strict equality and objects
+    // https://stackoverflow.com/questions/1068834/object-comparison-in-javascript
+    // stringifying objects allows a better comparison as JS doesn't have issues with string comparison.
+    if (isLoading || JSON.stringify(weatherData) === JSON.stringify(defaultWeatherData))
         return (
             <StyledWidget>
                 <Loading />

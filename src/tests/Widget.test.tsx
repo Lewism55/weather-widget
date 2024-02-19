@@ -8,7 +8,7 @@ describe('Widget', () => {
     it('displays the location based on the weather data provided', async () => {
         render(
             <WeatherContext.Provider
-                value={{ weatherData: mockWeatherData, forecastData: mockForecastData, isLoading: false, location: '', setLocation: vi.fn(), refresh: vi.fn() }}
+                value={{ weatherData: mockWeatherData, forecastData: mockForecastData, isLoading: false, location: '', setLocation: vi.fn() }}
             >
                 <Widget />
             </WeatherContext.Provider>,
